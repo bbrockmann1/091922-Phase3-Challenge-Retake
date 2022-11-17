@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
     has_many :actors, through: :roles
 
     def cast_role(actor, character_name, salary)
-        Role.create(movie_id: self.id, actor_id: self.id, salary: salary, character_name: character_name)
+        Role.create(salary: salary, character_name: character_name, movie_id: self.id, actor_id: self.id)
     end
 
     def all_credits
