@@ -8,7 +8,7 @@ class Actor < ActiveRecord::Base
 
     def blockbusters
         self.movies.each do |movie|
-            movie.box_office_earnings > 50000000
+            movie.box_office_earnings > 50_000_000
         end
     end
 

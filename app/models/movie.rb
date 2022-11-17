@@ -3,12 +3,12 @@ class Movie < ActiveRecord::Base
     has_many :actors, through: :roles
 
     def cast_role(actor, character_name, salary)
-        Role.create(movie_id: self.id, actor_id: self.id, salary: salary, character_name: character_name)
+        Role.create(salary: salary, character_name: character_name, movie_id: self.id, actor_id: actor.id)
     end
 
     def all_credits
-        self.roles.each do |role|
-            "#{role.character_name}: Played by #{role.name}"
+        self.roles.each.map do |r|
+            "#{r.character_name}: Played by #{r.actor.name}"
         end
     end
 
